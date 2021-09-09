@@ -1,0 +1,6 @@
+# Enable block list
+14 21 * * 0-4 /usr/bin/docker exec pihole bash -c "sqlite3 /etc/pihole/gravity.db \"update 'group' set 'enabled'=1 where name='Block';\" ; /usr/local/bin/pihole restartdns reload-lists" &>/dev/null
+
+# Disable block list
+59 4 * * * /usr/bin/docker exec pihole bash -c "sqlite3 /etc/pihole/gravity.db \"update 'group' set 'enabled'=0 where name='Block';\" ; /usr/local/bin/pihole restartdns reload-lists" &>/dev/null
+
