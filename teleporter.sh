@@ -1,7 +1,8 @@
 #/bin/bash
 # Script to backup the pihole config within the docker container.
 
-/usr/bin/docker exec -w "/teleporter" pihole pihole -a -t
+cd /home/ben/pihole/teleporter
+/usr/local/bin/pihole -a -t
 
 # Copy files to remote location
 /usr/bin/rclone copy --update --verbose --transfers 30 --checkers 8 \
